@@ -65,7 +65,8 @@ class homescreen extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Expanded( // ✅ prevents overflow
+                            Expanded(
+                              // ✅ prevents overflow
                               child: Image.asset(
                                 category.image,
                                 fit: BoxFit.contain,
@@ -89,6 +90,38 @@ class homescreen extends StatelessWidget {
                     },
                     separatorBuilder: (context, index) => SizedBox(width: 10),
                     itemCount: categories.length,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Container(
+            margin: EdgeInsets.only(top: 10),
+            constraints: BoxConstraints(
+              minHeight: MediaQuery.of(context).size.height * 0.7,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(19),
+            ),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Lease Again',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      TextButton(onPressed: (){}, child: Text('See All')),
+                      Icon(IconlyLight.arrowRight)
+                    ],
                   ),
                 ),
               ],
