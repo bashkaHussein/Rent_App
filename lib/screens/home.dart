@@ -23,7 +23,7 @@ class homescreen extends StatelessWidget {
             ),
           ),
         ],
-        title: ActionChip(label: Text("Bashir Hussein"),
+        title: ActionChip(label: Text("Muqdisho"),
         shape: StadiumBorder(),
         backgroundColor: Color(0xff272b30),
         labelStyle: TextStyle(color: Colors.white),
