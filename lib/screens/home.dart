@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:renting_app/data/category.dart';
 
 class homescreen extends StatelessWidget {
   const homescreen({super.key});
@@ -48,33 +49,48 @@ class homescreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 98,
+                  height: 110, // increased to give room for image + text
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index){
+                    itemBuilder: (context, index) {
+                      final category = categories[index];
                       return Container(
                         height: double.maxFinite,
                         width: 90,
-                        padding: EdgeInsets.all(20),
+                        padding: EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.circular(18)
+                          color: category.color,
+                          borderRadius: BorderRadius.circular(18),
                         ),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            //category image
-
-
-                            //category name
+                            Expanded( // ✅ prevents overflow
+                              child: Image.asset(
+                                category.image,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                            SizedBox(height: 6), // ✅ spacing
+                            Text(
+                              category.name,
+                              maxLines: 1, // ✅ keep text on one line
+                              overflow: TextOverflow.ellipsis, // ✅ safe cut
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                                color: Colors.black,
+                              ),
+                            ),
                           ],
                         ),
                       );
-
                     },
-                    separatorBuilder: (context, index)=> SizedBox(width: 10,),
-                    itemCount: 8,
+                    separatorBuilder: (context, index) => SizedBox(width: 10),
+                    itemCount: categories.length,
                   ),
-                )
+                ),
               ],
             ),
           ),
