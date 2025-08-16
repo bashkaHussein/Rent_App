@@ -19,7 +19,7 @@ List<Category> categories = [
     color: const Color(0xffc2f6bf),
   ),
   Category(
-    name: "Elect",
+    name: "Electronic",
     image: "assets/fridge.png",
     color: const Color(0xffc8a0f1),
   ),
