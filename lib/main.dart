@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:renting_app/screens/home.dart';
+// import 'package:renting_app/screens/home.dart';
+import 'package:renting_app/screens/homescreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const homescreen()
+      home: const HomeScreen()
     );
   }
 }
