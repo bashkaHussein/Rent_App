@@ -1,11 +1,22 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:renting_app/data/category.dart';
+import 'package:renting_app/data/products.dart';
+import 'package:renting_app/screens/home.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  int _selectedInedex = 0;
+  final List<Widget> _pages = [homescreen(), homescreen()];
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff151617),
@@ -132,6 +143,7 @@ class HomeScreen extends StatelessWidget {
                     padding: EdgeInsets.only(left: 16),
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (countext, index) {
+                      final product = products[index];
                       return SizedBox(
                         width: 130,
                         child: Column(
@@ -146,7 +158,7 @@ class HomeScreen extends StatelessWidget {
                                 color: Colors.grey.shade100,
                                 borderRadius: BorderRadius.circular(20),
                                 image: DecorationImage(
-                                  image: AssetImage('assets/tablet.png'),
+                                  image: AssetImage(product.image),
                                 ),
                               ),
                               child: Padding(
@@ -187,7 +199,7 @@ class HomeScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(bottom: 5),
                               child: Text(
-                                'Google Pixel Tablet',
+                                product.name,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15,
@@ -200,7 +212,7 @@ class HomeScreen extends StatelessWidget {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: '\$17.00',
+                                    text: '\$${product.price}',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 15,
@@ -223,12 +235,22 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                     separatorBuilder: (context, index) => SizedBox(width: 15),
-                    itemCount: 5,
+                    itemCount: products.length,
                   ),
                 ),
               ],
             ),
           ),
+        ],
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.white,
+        color: Colors.deepPurpleAccent.shade400,
+        animationDuration: Duration(milliseconds: 1),
+        items: [
+          Icon(Icons.home, color: Colors.white, size: 30),
+          Icon(Icons.favorite, color: Colors.white, size: 30),
+          Icon(Icons.search, color: Colors.white, size: 30),
         ],
       ),
     );

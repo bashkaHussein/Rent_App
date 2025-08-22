@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:renting_app/screens/home.dart';
+import 'package:renting_app/screens/home.dart';
 import 'package:renting_app/screens/homescreen.dart';
 
 void main() {
@@ -13,11 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Flutter practice',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const HomeScreen()
+      home: const HomeScreen(),
     );
   }
 }
