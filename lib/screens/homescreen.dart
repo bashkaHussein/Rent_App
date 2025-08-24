@@ -1,6 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:renting_app/data/category.dart';
 import 'package:renting_app/data/products.dart';
@@ -14,45 +13,47 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
   int _selectedInedex = 0;
   final List<Widget> _pages = [homescreen(), homescreen()];
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff151617),
+      backgroundColor: const Color(0xff151617),
       appBar: AppBar(
         centerTitle: true,
-        leading: Icon(IconlyLight.search),
-        backgroundColor: Color(0xff151617),
+        leading: const Icon(IconlyLight.search),
+        backgroundColor: const Color(0xff151617),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
             onPressed: () {},
             icon: Badge(
-              alignment: Alignment(1, -1.07),
-              backgroundColor: Color(0xff724cf6),
-              child: Icon(IconlyLight.notification),
+              alignment: const Alignment(1, -1.07),
+              backgroundColor: const Color(0xff724cf6),
+              child: const Icon(IconlyLight.notification),
             ),
           ),
         ],
         title: ActionChip(
-          shape: StadiumBorder(),
-          backgroundColor: Color(0xff272b30),
-          labelStyle: TextStyle(color: Colors.white),
-          label: Text('Mogadisho'),
+          shape: const StadiumBorder(),
+          backgroundColor: const Color(0xff272b30),
+          labelStyle: const TextStyle(color: Colors.white),
+          label: const Text('Mogadisho'),
           side: BorderSide.none,
-          avatar: Icon(IconlyLight.location, color: Colors.white),
+          avatar: const Icon(IconlyLight.location, color: Colors.white),
           onPressed: () {},
         ),
       ),
       body: ListView(
         children: [
+          // Header
           Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.all(10),
                   child: Text(
                     'Find The Best Rent',
@@ -63,13 +64,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
+                // Categories
                 SizedBox(
                   height: 110,
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       final category = categories[index];
-                      return (Container(
+                      return Container(
                         height: double.maxFinite,
                         width: 90,
                         decoration: BoxDecoration(
@@ -85,10 +87,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fit: BoxFit.contain,
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               category.name,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 17,
                               ),
@@ -97,17 +99,20 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ],
                         ),
-                      ));
+                      );
                     },
-                    separatorBuilder: (context, index) => SizedBox(width: 12),
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 12),
                     itemCount: categories.length,
                   ),
                 ),
               ],
             ),
           ),
+
+          // Lease Again section
           Container(
-            margin: EdgeInsets.only(top: 10),
+            margin: const EdgeInsets.only(top: 10),
             constraints: BoxConstraints(
               minHeight: MediaQuery.of(context).size.height * 0.7,
             ),
@@ -116,13 +121,15 @@ class _HomeScreenState extends State<HomeScreen> {
               borderRadius: BorderRadius.circular(18),
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Header row
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         'Lease Again',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -131,16 +138,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       TextButton.icon(
                         onPressed: () {},
-                        icon: Text('See More'),
-                        label: Icon(IconlyLight.arrowRight2),
+                        icon: const Text('See More'),
+                        label: const Icon(IconlyLight.arrowRight2),
                       ),
                     ],
                   ),
                 ),
+
+                // Horizontal product list
                 SizedBox(
                   height: 220,
                   child: ListView.separated(
-                    padding: EdgeInsets.only(left: 16),
+                    padding: const EdgeInsets.only(left: 16),
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (countext, index) {
                       final product = products[index];
@@ -149,9 +158,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            //image
+                            // image
                             Container(
-                              margin: EdgeInsets.only(bottom: 10),
+                              margin: const EdgeInsets.only(bottom: 10),
                               width: double.maxFinite,
                               height: 130,
                               decoration: BoxDecoration(
@@ -162,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(5),
+                                padding: const EdgeInsets.all(5),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   mainAxisAlignment:
@@ -173,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       width: 30,
                                       child: IconButton.filledTonal(
                                         onPressed: () {},
-                                        icon: Icon(Icons.favorite),
+                                        icon: const Icon(Icons.favorite),
                                         padding: EdgeInsets.zero,
                                         iconSize: 18,
                                       ),
@@ -181,26 +190,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        //icon
+                                      children: const [
                                         Icon(IconlyLight.star, size: 20),
-                                        SizedBox(width: 10),
+                                        SizedBox(width: 6),
                                         Text('7.1'),
-
-                                        //text
                                       ],
                                     ),
                                   ],
                                 ),
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
 
+                            // Product name
                             Padding(
                               padding: const EdgeInsets.only(bottom: 5),
                               child: Text(
                                 product.name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15,
                                 ),
@@ -208,15 +215,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
+                            // Price
                             RichText(
                               text: TextSpan(
                                 children: [
                                   TextSpan(
                                     text: '\$${product.price}',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 15,
-                                      color: Colors.black, // don’t forget color
+                                      color: Colors.black,
                                     ),
                                   ),
                                   TextSpan(
@@ -234,8 +242,104 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     },
-                    separatorBuilder: (context, index) => SizedBox(width: 15),
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 15),
                     itemCount: products.length,
+                  ),
+                ),
+
+                // Available Now
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Available Now',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      // Product card fixed alignment
+                      Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: const Color(0xffF1EEF4),
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Image
+                            Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(8),
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/drill.png'),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+
+                            // Details
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // name + favorite
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Craftsman Cordless Drill',
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                      const Icon(Icons.favorite_outline),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 6),
+
+                                  // location + price + rating
+                                  Row(
+                                    children: const [
+                                      Icon(IconlyLight.location, size: 18),
+                                      SizedBox(width: 4),
+                                      Text('4.0km'),
+
+                                      SizedBox(width: 16),
+                                      Text(
+                                        '\$5.00 / hr',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500),
+                                      ),
+
+                                      SizedBox(width: 16),
+                                      Icon(IconlyLight.star, size: 18),
+                                      SizedBox(width: 4),
+                                      Text('4.99'),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -246,8 +350,8 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.white,
         color: Colors.deepPurpleAccent.shade400,
-        animationDuration: Duration(milliseconds: 1),
-        items: [
+        animationDuration: const Duration(milliseconds: 1),
+        items: const [
           Icon(Icons.home, color: Colors.white, size: 30),
           Icon(Icons.favorite, color: Colors.white, size: 30),
           Icon(Icons.search, color: Colors.white, size: 30),
