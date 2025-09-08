@@ -11,25 +11,38 @@ class ProductProvider extends ChangeNotifier {
   bool get isLoading => _isLoading;
 
   final String _appKey = "YOUR_APP_KEY";
-  final String _baseUrl = "http://10.111.10.50:5000/api";
+  final String _baseUrl = "http://10.0.2.2:5000/api"; // Emulator localhost
 
+  /// Fetch products from API
   Future<void> fetchProducts() async {
     _isLoading = true;
     notifyListeners();
 
     try {
-      final response = await http.get(Uri.parse("$_baseUrl/Get-Products"));
+      final response = await http.get(
+        Uri.parse("$_baseUrl/Get-Products"),
+        headers: {
+          'Content-Type': 'application/json',
+          'x-app-key': _appKey,
+        },
+      );
+
       debugPrint("API Response: ${response.body}");
 
       if (response.statusCode == 200) {
         final decoded = jsonDecode(response.body);
 
-        // Auto-handle both: pure list or wrapped key
+        // Auto-handle wrapped data key
         final List<dynamic> data = decoded is List
             ? decoded
-            : (decoded['products'] ?? decoded['data'] ?? []);
+            : (decoded['data'] ?? decoded['products'] ?? []);
 
         _products = data.map((item) => Product.fromJson(item)).toList();
+
+        debugPrint("Fetched ${_products.length} products:");
+        for (var p in _products) {
+          debugPrint("Product: ${p.name}, Price: ${p.price}, Image: ${p.image}");
+        }
       } else {
         debugPrint("Failed to load products: ${response.statusCode}");
       }
@@ -41,6 +54,7 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
+  /// Create a new product via API
   Future<bool> createProduct(Product product) async {
     try {
       final uri = Uri.parse("$_baseUrl/Create-Product");
