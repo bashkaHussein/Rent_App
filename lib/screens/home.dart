@@ -2,7 +2,6 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:renting_app/data/category.dart';
-import 'package:renting_app/data/products.dart';
 
 class homescreen extends StatelessWidget {
   const homescreen({super.key});
@@ -171,6 +170,44 @@ class homescreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Available Now', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                      Container(
+                        margin: EdgeInsets.only(top: 10),
+                        padding: EdgeInsets.all(10),
+                        width: double.infinity,
+                        
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(18),
+                          color: Color(0xffF1EEF4)
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 50,
+                              height: 50,
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: Colors.white,
+                              ),
+                              child: Image(image: AssetImage('assets/drill.png')),
+                            )
+                          ],
+                        ),
+                        
+                      )
+                    ],
+                  ),
+                  
+                  
+                ),
+              
 
            
               ],

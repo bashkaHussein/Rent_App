@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:renting_app/screens/home.dart';
+import 'package:provider/provider.dart';
+import 'package:renting_app/providers/product.dart';
+// import 'package:renting_app/screens/home.dart';
 import 'package:renting_app/screens/homescreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+       providers: [
+       ChangeNotifierProvider.value(value: ProductProvider())
+       ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
