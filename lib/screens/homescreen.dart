@@ -15,7 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -60,7 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
           }
 
           if (value.products.isEmpty) {
-            return const Center(child: Text(
+            return const Center(
+                child: Text(
               'No products available',
               style: TextStyle(color: Colors.white),
             ));
@@ -196,7 +196,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       color: Colors.grey.shade100,
                                       borderRadius: BorderRadius.circular(20),
                                       image: DecorationImage(
-                                        image: NetworkImage(product.image), // from API
+                                        image: NetworkImage(
+                                            product.image), // from API
                                         fit: BoxFit.cover,
                                       ),
                                     ),

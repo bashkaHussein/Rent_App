@@ -11,7 +11,8 @@ class ProductProvider extends ChangeNotifier {
   bool get isLoading => _isLoading;
 
   final String _appKey = "YOUR_APP_KEY";
-  final String _baseUrl = "http://10.0.2.2:5000/api"; // Emulator localhost
+  final String _baseUrl =
+      "http://192.168.137.162:5000/api"; // Emulator localhost
 
   /// Fetch products from API
   Future<void> fetchProducts() async {
@@ -41,7 +42,8 @@ class ProductProvider extends ChangeNotifier {
 
         debugPrint("Fetched ${_products.length} products:");
         for (var p in _products) {
-          debugPrint("Product: ${p.name}, Price: ${p.price}, Image: ${p.image}");
+          debugPrint(
+              "Product: ${p.name}, Price: ${p.price}, Image: ${p.image}");
         }
       } else {
         debugPrint("Failed to load products: ${response.statusCode}");
